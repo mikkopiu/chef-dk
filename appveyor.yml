@@ -21,13 +21,11 @@ branches:
 install:
   - systeminfo
   - winrm quickconfig -q
-  - regedit /s c:\projects\chefdk\appveyor_registry.reg
-  - SET FORCE_FFI_YAJL=ext
   - SET PATH=C:\Ruby%ruby_version%\bin;%PATH%
   - echo %PATH%
   - appveyor DownloadFile http://curl.haxx.se/ca/cacert.pem -FileName C:\cacert.pem
   - set SSL_CERT_FILE=C:\cacert.pem
-  - SET BUNDLE_WITHOUT=guard:maintenance:tools:integration:changelog:docgen:travis:style:omnibus_package:aix:bsd:linux:mac_os_x:solaris
+  - SET BUNDLE_WITHOUT=guard:maintenance:tools:integration:docgen:travis:style:omnibus_package:aix:bsd:linux:mac_os_x:solaris
   - bundle config --local path vendor/bundle # use the cache we define above
   - bundle install || bundle install || bundle install
 
